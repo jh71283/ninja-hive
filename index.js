@@ -1,7 +1,7 @@
 var util = require('util');
 var stream = require('stream');
 
-var nest = require('unofficial-nest-api');
+var hive = require('node-hive-api');
 
 util.inherits(Driver,stream);
 
@@ -33,8 +33,8 @@ Driver.prototype.config = function(rpc,cb) {
   if (!rpc) {
     return cb(null, {
         "contents":[
-          { "type": "input_field_text", "field_name": "username", "value": self.opts.username || '', "label": "Nest Username", "placeholder": "", "required": true},
-          { "type": "input_field_password", "field_name": "password", "value": "", "label": "Nest Password", "placeholder": "", "required": true},
+          { "type": "input_field_text", "field_name": "username", "value": self.opts.username || '', "label": "Hive Username", "placeholder": "", "required": true},
+          { "type": "input_field_password", "field_name": "password", "value": "", "label": "Hive Password", "placeholder": "", "required": true},
           { "type": "submit", "name": "Add", "rpc_method": "setCredentials" }
         ]
       });
@@ -46,7 +46,7 @@ Driver.prototype.config = function(rpc,cb) {
             if (err) {
                 cb(null, {
                     "contents": [
-                      { "type":"paragraph", "text":"There was an error logging into your nest account : " + err},
+                      { "type":"paragraph", "text":"There was an error logging into your hive account : " + err},
                       { "type":"close", "text":"Close"}
                     ]
                 });
